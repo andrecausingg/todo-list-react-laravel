@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import envelopeIcon from '../images/icons/envelope-solid.svg';
 import eyeSlashIcon from '../images/icons/eye-slash-solid.svg';
 import eyeIcon from '../images/icons/eye-solid.svg';
@@ -32,11 +31,11 @@ const Signup = () => {
   const handlePasswordConfirmChange = (e) => {
     setPasswordConfirm(e.target.value);
   }
-  // Display Password Icon
+  // Display Password
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   }
-  // Display Confirm Password Icon
+  // Display Confirm
   const togglePasswordConfirmVisibility = () => {
     setShowPasswordConfirm(!showPasswordConfirm);
   }
@@ -61,7 +60,7 @@ const Signup = () => {
               <div className="yot-mb-8 yot-text-center">
                 <h3 className="yot-tc-blue1">Sign Up</h3>
                 {password !== "" &&  passwordConfirm !== "" && password != passwordConfirm && (
-                  <span className="yot-tc-red yot-mtb-8">Password and Confirm Password not Match</span>
+                  <span className="yot-tc-red">Please enter a valid email address</span>
                 )}
               </div>
 

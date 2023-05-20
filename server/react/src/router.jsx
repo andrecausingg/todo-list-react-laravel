@@ -7,7 +7,7 @@ import NotFound from "./assets/views/NotFound";
 
 const router = createBrowserRouter([
     {
-        path: '/login',
+        path: '/',
         element: <Login />
     },
     {
