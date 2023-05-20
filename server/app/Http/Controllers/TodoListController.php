@@ -54,7 +54,7 @@ class TodoListController extends Controller
         $todos = TodoListModel::find($id);
         if(!$todos){
             return response()->json([
-                'message' => "Product Not Found"
+                'message' => "Todo List Not Found"
             ], 404);
         }
 
@@ -80,7 +80,7 @@ class TodoListController extends Controller
             $todos = TodoListModel::find($id);
             if (!$todos) {
                 return response()->json([
-                    'message' => "Product Not Found"
+                    'message' => "Todo List Not Found"
                 ], 404);
             }
     
@@ -106,7 +106,7 @@ class TodoListController extends Controller
         $todos = TodoListModel::find($id);
         if (!$todos) {
             return response()->json([
-                'message' => "Product Not Found"
+                'message' => "Todo List Not Found"
             ], 404);
         }
 
