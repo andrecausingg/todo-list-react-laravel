@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import envelopeIcon from '../images/icons/envelope-solid.svg';
 import eyeSlashIcon from '../images/icons/eye-slash-solid.svg';
@@ -44,7 +45,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(password.length >= 8 && passwordConfirm.length >= 8 && password == passwordConfirm && isValidEmail){
+    if(password.length >= 8 && password !== "" && passwordConfirm.length >= 8 && passwordConfirm !== "" && password == passwordConfirm && isValidEmail){
       
       return;
     }
@@ -154,8 +155,8 @@ const Signup = () => {
 
                 {/* <!-- Nav Form -->    */}
                 <div className="yot-mb-4 yot-flex yot-flex-ai-c-jc-sb">
-                    <span className="yot-cursor-pointer yot-active-hb-blue1">Forgot Password</span>
-                    <span className="yot-cursor-pointer yot-active-hb-blue1">Log In</span>
+                    <Link className="yot-cursor-pointer yot-active-hb-blue1" to="/forgotPassword">Forgot Password</Link>
+                    <Link className="yot-cursor-pointer yot-active-hb-blue1" to="/">Log In</Link>
                 </div>
 
                 {/* Terms and Condition */}
