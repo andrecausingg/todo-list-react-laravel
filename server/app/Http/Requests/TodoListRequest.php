@@ -12,7 +12,6 @@ class TodoListRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
-        // return false;
     }
 
     /**
@@ -22,26 +21,30 @@ class TodoListRequest extends FormRequest
      */
     public function rules(): array
     {
-        if(request()->isMethod('post')){
+        if ($this->method() === 'POST') {
             return [
-                'description' => 'required|string|max:255'
+                'description' => 'required|string|max:255',
+                'img' => 'required|string|max:255',
             ];
-        }else{
+        } else {
             return [
-                'description' => 'required|string'
-            ]; 
+                'description' => 'required|string',
+                'img' => 'required|string'
+            ];
         }
     }
 
     public function messages()
     {
-        if(request()->isMethod('post')){
+        if ($this->method() === 'POST') {
             return [
-                'description.required' => 'Description is Required!'
+                'description.required' => 'Description is Required!',
+                'img.required' => 'Img is Required!',
             ];
-        }else{
+        } else {
             return [
-                'description.required' => 'Description is Required!'
+                'description.required' => 'Description is Required!',
+                'img.required' => 'Image is Required!'
             ];
         }
     }

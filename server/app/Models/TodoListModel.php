@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TodoListModel extends Model
 {
-    protected $table = 'todo_list_tbl';
+    protected $table = 'todo_lists_tbl';
     protected $primaryKey = 'id';
-    protected $fillable = ['description'];
+    protected $fillable = ['user_id','description','img'];
     use HasFactory;
 }

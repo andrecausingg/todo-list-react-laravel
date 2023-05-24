@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_tbl', function (Blueprint $table) {
+        Schema::create('user_tbl', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
             $table->string('password');
@@ -20,8 +20,7 @@ return new class extends Migration
             $table->string('ip_address');
             $table->string('verification_code');
             $table->string('verification_key');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users_tbl');
+        Schema::dropIfExists('user_tbl');
     }
 };
