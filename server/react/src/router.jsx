@@ -8,6 +8,7 @@ import NotFound from "./assets/views/NotFound";
 import DefaultLayout from "./assets/components/DefaultLayout";
 import GuestLayout from "./assets/components/GuestLayout";
 import Dashboard from "./assets/views/Dashboard";
+import  TodoList from "./assets/components/TodoList"
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
         children:[
             {
                 path: '/',
-                element: <Login />
+                element: <TodoList />
             },
             {
                 path: '/signup',
