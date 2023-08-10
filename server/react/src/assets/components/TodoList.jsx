@@ -21,7 +21,7 @@ const TodoList = () => {
   // Display Data
   useEffect(() => {
       // axios.get('http://127.0.0.1:8000/api/Alltodos')
-      fetch("http://127.0.0.1:8000/api/Alltodos")
+      fetch("http://127.0.0.1:8000/api/todo")
       .then(res=>{return res.json()})
       .then((response) => {
         setTodos(response.todos);
@@ -36,12 +36,13 @@ const TodoList = () => {
     e.preventDefault();
     handleCreate();
   };
+  
   // Create
   const handleCreate = () => {
     axios.post('http://127.0.0.1:8000/api/create', { description })
       .then(() => {
         setDescription('');
-        axios.get('http://127.0.0.1:8000/api/Alltodos')
+        axios.get('http://127.0.0.1:8000/api/todo')
         .then((response) => {
           setTodos(response.data.todos);
         })
@@ -53,6 +54,7 @@ const TodoList = () => {
         console.log(error);
       });
   };
+
   // Update
   const handleEdit = (id) =>{
     const newDescription = prompt('Enter new description', todos.find(todo => todo.id === id).description);
@@ -75,9 +77,10 @@ const TodoList = () => {
         });
     }
   };
+
   // Delete
   const handleDelete = (id) => {
-    axios.delete(`http://127.0.0.1:8000/api/delete/${id}`)
+    axios.delete(`http://127.0.0.1:8000/api/destroy/${id}`)
       .then(() => {
         const newTodos = todos.filter(todo => todo.id !== id);
         setTodos(newTodos);
@@ -203,6 +206,7 @@ const TodoList = () => {
               <thead>
                 <tr>
                   <th>Description</th>
+                  <th>Images</th>
                   <th>Created At</th>
                   <th>Updated At</th>
                   <th>Action</th>
@@ -212,8 +216,14 @@ const TodoList = () => {
                 {filteredTodos.slice().reverse().map((todo) => (
                   <tr key={todo.id}>
                     <td>{todo.description}</td>
+                    <td>
+                      <img
+                        src={`http://127.0.0.1:8000/storage/${todo.image}`} // Construct the image URL
+                        alt="Todo Image"
+                        style={{ maxWidth: '100px' }} // Adjust styling as needed
+                      />
+                    </td>
                     <td>{moment.tz(todo.created_at, 'UTC').tz('Asia/Manila').format('MMMM D, YYYY h:mm:ss A')}</td>
-                      
                     <td>{moment.tz(todo.updated_at, 'UTC').tz('Asia/Manila').format('MMMM D, YYYY h:mm:ss A')}</td>
                     <td className='yot-flex yot-flex-ai-c-jc-se'>
                       <img className='yot-cursor-pointer' src={editImg} alt="Edit" style={{ width: '24px' }} onClick={() => handleEdit(todo.id)}/>
